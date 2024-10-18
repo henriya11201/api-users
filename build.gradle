@@ -1,0 +1,77 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.1.6'
+	id "org.openapi.generator" version "6.3.0"
+
+}
+
+group = 'com.nisum.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(11)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+	implementation 'org.openapitools:jackson-databind-nullable:0.2.4'
+	implementation 'io.swagger.core.v3:swagger-annotations:2.2.9'
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+}
+
+openApiGenerate {
+	generatorName = "spring"
+	inputSpec = "$rootDir/src/main/resources/swagger/api.yaml" // Archivo OpenAPI 3.0.0
+	outputDir = "$buildDir/generated" // Directorio de salida para las clases generadas
+	apiPackage = "com.nisum.users.api" // Cambia este nombre de paquete por el tuyo
+	modelPackage = "com.nisum.users.model"
+	invokerPackage = "com.nisum.users.invoker"
+	configOptions = [
+			dateLibrary: "java8", // Puedes cambiar la librería de fechas si es necesario
+			interfaceOnly: "true" // Solo generar interfaces de controladores
+	]
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs += "$buildDir/generated/src/main/java"
+		}
+	}
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

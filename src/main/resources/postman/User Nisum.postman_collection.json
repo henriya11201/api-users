@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "a6e042e7-2365-41cd-a9b9-562d1481932a",
+		"name": "User Nisum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Juan ru\",\r\n\"email\": \"Juanru@rodriguez.org\",\r\n\"password\": \"Punter2*\",\r\n\"phones\": [\r\n{\r\n\"number\": \"111\",\r\n\"cityCode\": \"2\",\r\n\"countryCode\": \"57\"\r\n},\r\n{\r\n\"number\": \"777\",\r\n\"cityCode\": \"2\",\r\n\"countryCode\": \"57\"\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoianVhbmd1ZXJyZUByb2RyaWd1ZXoub3JnIiwiaWF0IjoxNzI5MjIyOTE5LCJleHAiOjE3MjkyMjQ3MTl9.KLhFWDZ-Ky-PNbWX__U8MxD2W0-TQfPyblKz7SVAe1LLbeIORoP_JJt7sMNmp1_ANIjjU7I9HjS2Y6pMo0qIpA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \" henry Nieeeee\",\r\n\"email\": \"JuanGuerre@rodriguez.org\",\r\n\"password\": \"*Hunter27\",\r\n\"phones\": [\r\n{\r\n\"number\": \"999\",\r\n\"cityCode\": \"2\",\r\n\"countryCode\": \"01\"\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/user/cf326a13-1840-4041-95a2-3becd13c5a14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"cf326a13-1840-4041-95a2-3becd13c5a14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiSnVhbnJ1aXpAcm9kcmlndWV6Lm9yZyIsImlhdCI6MTcyOTIwNjgzNSwiZXhwIjoxNzI5MjA4NjM1fQ.lmqRfnNk1oAxEftCY4YhGC5QivPt4xF7DY3S8fdN7Ki6eeJUmET0VI7SMf3ZwdJahuCui8PQD8pf04FezZX3JQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiSnVhbnJ1aXpAcm9kcmlndWV6Lm9yZyIsImlhdCI6MTcyOTIwNjgzNSwiZXhwIjoxNzI5MjA4NjM1fQ.lmqRfnNk1oAxEftCY4YhGC5QivPt4xF7DY3S8fdN7Ki6eeJUmET0VI7SMf3ZwdJahuCui8PQD8pf04FezZX3JQ\n",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/user/dd3dc672-0a85-4efc-b2d6-208e46301238",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"dd3dc672-0a85-4efc-b2d6-208e46301238"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "disableUserById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiSnVhbnJ1QHJvZHJpZ3Vlei5vcmciLCJpYXQiOjE3MjkyMjMwNDYsImV4cCI6MTcyOTIyNDg0Nn0.HnonggdWcsjJpfdrn-89HgBSug5DESEQa8WDKwbpptLMfd3VqQvfQUudmPpo_9nnxAbxk1Mu308jg_hXvWTH9w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/user/disable/452cc50c-1dcd-42f2-985e-52e054e31189",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"disable",
+						"452cc50c-1dcd-42f2-985e-52e054e31189"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enableUserById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiSnVhbnJ1QHJvZHJpZ3Vlei5vcmciLCJpYXQiOjE3MjkyMjMwNDYsImV4cCI6MTcyOTIyNDg0Nn0.HnonggdWcsjJpfdrn-89HgBSug5DESEQa8WDKwbpptLMfd3VqQvfQUudmPpo_9nnxAbxk1Mu308jg_hXvWTH9w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/user/enable/452cc50c-1dcd-42f2-985e-52e054e31189",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"enable",
+						"452cc50c-1dcd-42f2-985e-52e054e31189"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,744 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: support@nisum.cl
+    name: NISUM LATAM
+    url: 'https://www.nisum.com/es/contactanos'
+  description: >-
+    Test User Management. DEVELOPMENT JAVA SR BACK-END.
+  license:
+    name: Licencia Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  termsOfService: 'https://www.nisum.com/es/terminos-y-condiciones'
+  title: TEST USER MANAGEMENT
+  version: 1.0.0
+externalDocs:
+  description: >-
+    For more information please consult the documentation found
+    at the following path
+  url: 'http://swagger.io'
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /auth/login:
+    post:
+      operationId: loginUser
+      tags:
+        - loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRq'
+        required: true
+      responses:
+        '200':
+          description: Successful Operation Generate Token JWT
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginRs'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '406':
+          description: Not Acceptable Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '408':
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        default:
+          description: Unspecified error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /user:
+    post:
+      operationId: createUser
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRq'
+        required: true
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRs'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '406':
+          description: Not Acceptable Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '408':
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        default:
+          description: Unspecified error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    get:
+      operationId: getUser
+      tags:
+        - user
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListRs'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '406':
+          description: Not Acceptable Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '408':
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        default:
+          description: Unspecified error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /user/{id}:
+    get:
+      operationId: getUserId
+      tags:
+        - user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User id to search.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRs'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '406':
+          description: Not Acceptable Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '408':
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        default:
+          description: Unspecified error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+    put:
+      operationId: updateUser
+      tags:
+        - user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRq'
+        required: true
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRs'
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '406':
+          description: Not Acceptable Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '408':
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        default:
+          description: Unspecified error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /user/disable/{id}:
+    delete:
+      operationId: disableUser
+      tags:
+        - user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID user to disable.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Successful Operation.
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: UserNot Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '406':
+          description: Not Acceptable Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '408':
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        default:
+          description: Unspecified error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /user/enable/{id}:
+    delete:
+      operationId: enableUser
+      tags:
+        - user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID user to enable.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Successful Operation.
+        '400':
+          description: Invalid Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '403':
+          description: Forbidden access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: UserNot Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '405':
+          description: Method Not Allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '406':
+          description: Not Acceptable Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '408':
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        default:
+          description: Unspecified error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    LoginRq:
+      type: object
+      additionalProperties: false
+      required:
+        - user
+        - password
+      properties:
+        email:
+          maxLength: 200
+          format: user
+          pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          type: string
+          example: "usermail@example.com"
+          description: User email.
+        password:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 -_]+'
+          type: string
+          example: "*p4ssword"
+          description: User password.
+    LoginRs:
+      type: object
+      additionalProperties: false
+      required:
+        - token
+        - expiresIn
+        - tokenType
+      properties:
+        token:
+          type: string
+          description: Token Generate to Login User.
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+        expiresIn:
+          type: number
+          description: Time expire Token in seconds.
+          example: 1800
+        tokenType:
+          type: string
+          description: Type Token.
+          example: "Bearer"
+    UserRq:
+      type: object
+      additionalProperties: false
+      required:
+        - email
+        - password
+      properties:
+        name:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 _-]+$'
+          type: string
+          description: User name.
+        email:
+          maxLength: 200
+          format: email
+          pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+          type: string
+          example: "usermail@example.com"
+          description: User email.
+        password:
+          maxLength: 200
+          type: string
+          example: "*p4ssword"
+          description: User password.
+        phones:
+          type: array
+          description: User Phones.
+          items:
+            $ref: '#/components/schemas/PhoneRq'
+    UserRs:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - created
+        - modified
+        - lastLogin
+        - token
+        - isActive
+      properties:
+        id:
+          minLength: 36
+          maxLength: 36
+          type: string
+          description: >-
+            Request Identifier. Universally unique dentifier for the message.
+            Used to correlate responses with requests.
+          format: uuid
+          pattern: >-
+            ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        name:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 _-]+$'
+          type: string
+          description: User name.
+        created:
+          maxLength: 200
+          format: date-time
+          pattern: '^\d{4}-\d{2}-\d{2}$'
+          type: string
+          description: Creation date.
+        modified:
+          maxLength: 200
+          format: date-time
+          pattern: '^\d{4}-\d{2}-\d{2}$'
+          type: string
+          description: Update date.
+        lastLogin:
+          maxLength: 200
+          format: date-time
+          pattern: '^\d{4}-\d{2}-\d{2}$'
+          type: string
+          description: Last login date.
+        token:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 -_]+'
+          type: string
+          description: Token API.
+        isActive:
+          type: boolean
+          description: User status.
+    UserListRs:
+      type: object
+      additionalProperties: false
+      required:
+        - userList
+      properties:
+        userList:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRs'
+    PhoneRq:
+      type: object
+      additionalProperties: false
+      properties:
+        number:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 _-]+$'
+          type: string
+          description: Number phone.
+          example: "+573103333333"
+        cityCode:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 _-]+$'
+          type: string
+          description: City code.
+        countryCode:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 _-]+$'
+          type: string
+          description: Country code.
+    ApiError:
+      type: object
+      additionalProperties: false
+      properties:
+        detail:
+          maxLength: 500
+          pattern: '^[A-Za-z0-9 -_]+'
+          type: string
+        message:
+          maxLength: 200
+          pattern: '^[A-Za-z0-9 -_]+'
+          type: string
+        status:
+          maximum: 999
+          minimum: 0
+          type: integer
+          format: int32
+security:
+  - bearerAuth: []
